@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>L'application Pépite</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E%F0%9F%92%8E%3C/text%3E%3C/svg%3E">
+  <style>
+    body {
+      background: linear-gradient(135deg, #f9c7e6 0%, #c7e6fa 100%);
+      font-family: 'Inter', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+    .container {
+      max-width: 900px;
+      margin: 24px auto;
+      background: rgba(255,255,255,0.85);
+      border-radius: 16px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+      padding: 0 0 32px 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 90vh;
+    }
+    .main-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-top: 12px;
+    }
+    .congrats {
+      font-size: 1.6rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 8px;
+      color: #7b3fe4;
+      text-shadow: 0 2px 8px #fff8, 0 1px 0 #fff;
+    }
+    .desc {
+      font-size: 1rem;
+      color: #5a5a7a;
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .prize-box {
+      background: linear-gradient(90deg, #f9c7e6 0%, #c7e6fa 100%);
+      border-radius: 10px;
+      padding: 24px 32px;
+      margin-bottom: 32px;
+      min-width: 260px;
+      max-width: 400px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .prize-label {
+      color: #7b3fe4;
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+    .prize-amount {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #00b6e6;
+      text-shadow: 0 2px 8px #fff8, 0 1px 0 #fff;
+    }
+    .cta-btn {
+      background: linear-gradient(90deg, #ff7edb 0%, #7b3fe4 100%);
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      padding: 10px 28px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin: 0 auto;
+      display: block;
+      transition: background 0.2s;
+    }
+    .cta-btn:hover {
+      background: linear-gradient(90deg, #7b3fe4 0%, #00b6e6 100%);
+      color: #fff;
+    }
+    .copyright {
+      text-align: center;
+      color: #7b3fe4;
+      font-size: 0.95rem;
+      margin-top: 8px;
+      padding: 0 24px;
+      box-sizing: border-box;
+    }
+    @media (max-width: 700px) {
+      body {
+        padding: 0;
+      }
+      .container {
+        max-width: 100vw;
+        margin: 0;
+        border-radius: 0;
+        box-shadow: none;
+        padding: 0 20px 16px 20px;
+      }
+      .main-content {
+        margin-top: 4px;
+        padding: 0 20px;
+      }
+      .congrats {
+        font-size: 1.15rem;
+        margin-bottom: 6px;
+      }
+      .desc {
+        font-size: 0.95rem;
+        margin-bottom: 18px;
+      }
+      .prize-box {
+        padding: 10px 20px;
+        min-width: 0;
+        max-width: 100vw;
+        margin-bottom: 18px;
+      }
+      .prize-label {
+        font-size: 0.95rem;
+      }
+      .prize-amount {
+        font-size: 1.1rem;
+      }
+      .cta-btn {
+        font-size: 0.98rem;
+        padding: 8px 18px;
+        margin: 0 auto 10px auto;
+      }
+      .copyright {
+        font-size: 0.85rem;
+        margin-top: 2px;
+        margin-left: 24px;
+        margin-right: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="chrono-container" style="width:100%;display:flex;justify-content:center;margin-top:18px;margin-bottom:10px;">
+    <div id="chrono" style="background:linear-gradient(90deg, #ff7edb 0%, #7b3fe4 100%);color:#fff;font-size:1.3rem;font-weight:600;padding:8px 28px;border-radius:18px;box-shadow:0 2px 8px rgba(224,155,61,0.08);font-family:inherit;letter-spacing:2px;min-width:110px;text-align:center;">05:00</div>
+  </div>
+  <canvas id="confetti-canvas" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:999;"></canvas>
+  <div class="container">
+    <div class="main-content">
+      <div class="congrats">Inscris-toi dès maintenant sur l'application Pépite</div>
+      <div class="desc">Rejoins notre communauté WhatsApp et découvre comment, ensemble, nous aidons nos membres à gagner de l'argent chaque semaine !<br><br>Profite d'astuces, de conseils et d'un vrai esprit d'entraide pour maximiser tes chances de succès.</div>
+      <div class="prize-box">
+        <div class="prize-label">Invitation à la communauté</div>
+      </div>
+      <a href="https://chat.whatsapp.com/HbtVOSilyQQ0BVDjy9sJQx" target="_blank" rel="noopener noreferrer" class="cta-btn" style="text-decoration:none;display:inline-block;">Rejoindre le groupe WhatsApp</a>
+    </div>
+  </div>
+  <script>
+    // Simple confetti animation
+    const canvas = document.getElementById('confetti-canvas');
+    const ctx = canvas.getContext('2d');
+    let W = window.innerWidth;
+    let H = window.innerHeight;
+    canvas.width = W;
+    canvas.height = H;
+
+    window.addEventListener('resize', () => {
+      W = window.innerWidth;
+      H = window.innerHeight;
+      canvas.width = W;
+      canvas.height = H;
+    });
+
+    const confettiColors = ['#f7c873', '#e09b3d', '#e2b6b6', '#fff', '#f3eded', '#e09b3d', '#a89c9c'];
+    const confettiCount = 120;
+    const confetti = [];
+
+    function randomRange(a, b) {
+      return Math.random() * (b - a) + a;
+    }
+
+    for (let i = 0; i < confettiCount; i++) {
+      confetti.push({
+        x: randomRange(0, W),
+        y: randomRange(-H, 0),
+        r: randomRange(4, 8),
+        d: randomRange(2, 8),
+        color: confettiColors[Math.floor(Math.random() * confettiColors.length)],
+        tilt: randomRange(-10, 10),
+        tiltAngle: randomRange(0, Math.PI),
+        tiltAngleIncremental: randomRange(0.05, 0.12)
+      });
+    }
+
+    function drawConfetti() {
+      ctx.clearRect(0, 0, W, H);
+      for (let i = 0; i < confettiCount; i++) {
+        let c = confetti[i];
+        ctx.beginPath();
+        ctx.lineWidth = c.r;
+        ctx.strokeStyle = c.color;
+        ctx.moveTo(c.x + c.tilt + c.r / 3, c.y);
+        ctx.lineTo(c.x + c.tilt, c.y + c.tilt + c.d);
+        ctx.stroke();
+      }
+      updateConfetti();
+    }
+
+    function updateConfetti() {
+      for (let i = 0; i < confettiCount; i++) {
+        let c = confetti[i];
+        c.y += (Math.cos(c.d) + 2 + c.d / 2) * 0.8;
+        c.x += Math.sin(0.5) * 2;
+        c.tiltAngle += c.tiltAngleIncremental;
+        c.tilt = Math.sin(c.tiltAngle) * 15;
+
+        if (c.y > H) {
+          confetti[i] = {
+            x: randomRange(0, W),
+            y: randomRange(-20, 0),
+            r: c.r,
+            d: c.d,
+            color: c.color,
+            tilt: randomRange(-10, 10),
+            tiltAngle: 0,
+            tiltAngleIncremental: c.tiltAngleIncremental
+          };
+        }
+      }
+    }
+
+    let confettiRunning = true;
+    function animateConfetti() {
+      if (!confettiRunning) return;
+      drawConfetti();
+      requestAnimationFrame(animateConfetti);
+    }
+    animateConfetti();
+    // Arrêter les confettis après 5 secondes
+    setTimeout(() => {
+      confettiRunning = false;
+      ctx.clearRect(0, 0, W, H);
+      canvas.style.display = 'none';
+    }, 5000);
+
+    // Chrono countdown
+    let chrono = document.getElementById('chrono');
+    let time = 5 * 60; // 5 minutes in seconds
+    function updateChrono() {
+      let min = Math.floor(time / 60);
+      let sec = time % 60;
+      chrono.textContent = `${min.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
+      if (time > 0) time--;
+    }
+    setInterval(updateChrono, 1000);
+    updateChrono();
+
+    // Changer la couleur du chrono pour matcher le style
+    document.getElementById('chrono').style.background = 'linear-gradient(90deg, #ff7edb 0%, #7b3fe4 100%)';
+    document.getElementById('chrono').style.color = '#fff';
+  </script>
+</body>
+</html>
