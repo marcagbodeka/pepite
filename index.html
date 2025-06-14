@@ -144,17 +144,169 @@
         margin-right: 24px;
       }
     }
+    .carousel-section {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 32px;
+    }
+    .carousel-container.clean-style {
+      background: linear-gradient(135deg, #f7f8fa 60%, #e3e7fa 100%);
+      box-shadow: 0 6px 32px #0002, 0 1.5px 8px #7b3fe422;
+      border-radius: 28px;
+      padding: 24px 12px 18px 12px;
+      min-height: 340px;
+      max-width: 410px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: visible;
+    }
+    .carousel-img-bg {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 2px 12px #0001;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 320px;
+      height: 180px;
+      margin-bottom: 18px;
+    }
+    .carousel-img-bg img {
+      max-width: 100%;
+      max-height: 160px;
+      border-radius: 16px;
+      object-fit: contain;
+      background: #fff;
+      box-shadow: 0 1px 6px #0001;
+      display: block;
+    }
+    .carousel-slide {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: opacity 0.5s;
+      opacity: 0;
+      z-index: 1;
+    }
+    .carousel-slide.active {
+      display: flex;
+      opacity: 1;
+      position: relative;
+      z-index: 2;
+    }
+    .slide-caption {
+      color: #7b3fe4;
+      font-size: 1.08rem;
+      font-weight: 600;
+      text-align: center;
+      margin-top: 0;
+      margin-bottom: 0;
+      letter-spacing: 0.2px;
+      background: none;
+      border-radius: 0;
+      padding: 0;
+    }
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #fff;
+      color: #7b3fe4;
+      border: none;
+      font-size: 1.7rem;
+      padding: 2px 10px;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 3;
+      box-shadow: 0 1px 6px #7b3fe422;
+      opacity: 0.85;
+      transition: background 0.2s, color 0.2s, opacity 0.2s;
+      outline: none;
+    }
+    .carousel-btn:hover {
+      background: #7b3fe4;
+      color: #fff;
+      opacity: 1;
+    }
+    .carousel-btn.prev {
+      left: -18px;
+    }
+    .carousel-btn.next {
+      right: -18px;
+    }
+    @media (max-width: 700px) {
+      .carousel-container.clean-style {
+        max-width: 98vw;
+        min-width: 0;
+        padding: 10px 2px 10px 2px;
+        min-height: 220px;
+      }
+      .carousel-img-bg {
+        width: 98vw;
+        max-width: 98vw;
+        height: 120px;
+        padding: 4px;
+        margin-bottom: 10px;
+      }
+      .carousel-img-bg img {
+        max-height: 100px;
+        border-radius: 10px;
+      }
+      .carousel-btn.prev {
+        left: -6px;
+      }
+      .carousel-btn.next {
+        right: -6px;
+      }
+      .slide-caption {
+        font-size: 0.98rem;
+      }
+    }
+    .carousel-dots, .carousel-dots .dot { display: none !important; }
   </style>
 </head>
 <body>
   <div id="chrono-container" style="width:100%;display:flex;justify-content:center;margin-top:18px;margin-bottom:10px;">
     <div id="chrono" style="background:linear-gradient(90deg, #ff7edb 0%, #7b3fe4 100%);color:#fff;font-size:1.3rem;font-weight:600;padding:8px 28px;border-radius:18px;box-shadow:0 2px 8px rgba(224,155,61,0.08);font-family:inherit;letter-spacing:2px;min-width:110px;text-align:center;">05:00</div>
   </div>
+  <div class="carousel-section">
+    <div class="carousel-container clean-style">
+      <div class="carousel-slide active">
+        <div class="carousel-img-bg">
+          <img src="img/WhatsApp Image 2025-06-14 at 09.10.26.jpeg" alt="Exemple de retrait 1" />
+        </div>
+      </div>
+      <div class="carousel-slide">
+        <div class="carousel-img-bg">
+          <img src="img/WhatsApp Image 2025-06-14 at 09.03.00.jpeg" alt="Exemple de retrait 2" />
+        </div>
+      </div>
+      <div class="carousel-slide">
+        <div class="carousel-img-bg">
+          <img src="img/WhatsApp Image 2025-06-14 at 09.02.55.jpeg" alt="Exemple de retrait 3" />
+        </div>
+      </div>
+      <button class="carousel-btn prev">&#10094;</button>
+      <button class="carousel-btn next">&#10095;</button>
+    </div>
+  </div>
   <canvas id="confetti-canvas" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:999;"></canvas>
   <div class="container">
     <div class="main-content">
-      <div class="congrats">Inscris-toi dès maintenant sur l'application Pépite</div>
-      <div class="desc">Rejoins notre communauté WhatsApp et découvre comment, ensemble, nous aidons nos membres à gagner de l'argent chaque semaine !<br><br>Profite d'astuces, de conseils et d'un vrai esprit d'entraide pour maximiser tes chances de succès.</div>
+      <div class="congrats">Découvre le nouveau réseau social</div>
+      <div class="desc">Rejoins notre communauté WhatsApp et découvre comment, ensemble, nous aidons nos membres à débloquer la monétisation !<br><br>Profite d'astuces, de conseils et d'un vrai esprit d'entraide pour maximiser tes chances de succès.</div>
       <div class="prize-box">
         <div class="prize-label">Invitation à la communauté</div>
       </div>
@@ -264,6 +416,46 @@
     // Changer la couleur du chrono pour matcher le style
     document.getElementById('chrono').style.background = 'linear-gradient(90deg, #ff7edb 0%, #7b3fe4 100%)';
     document.getElementById('chrono').style.color = '#fff';
+
+    // Carrousel JS
+    const slides = document.querySelectorAll('.carousel-slide');
+    const prevBtn = document.querySelector('.carousel-btn.prev');
+    const nextBtn = document.querySelector('.carousel-btn.next');
+    let currentSlide = 0;
+    let carouselInterval;
+
+    function showSlide(idx) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === idx);
+      });
+      currentSlide = idx;
+    }
+    function nextSlide() {
+      let idx = (currentSlide + 1) % slides.length;
+      showSlide(idx);
+    }
+    function prevSlide() {
+      let idx = (currentSlide - 1 + slides.length) % slides.length;
+      showSlide(idx);
+    }
+    function startCarousel() {
+      carouselInterval = setInterval(nextSlide, 4000);
+    }
+    function stopCarousel() {
+      clearInterval(carouselInterval);
+    }
+    nextBtn.addEventListener('click', () => {
+      nextSlide();
+      stopCarousel();
+      startCarousel();
+    });
+    prevBtn.addEventListener('click', () => {
+      prevSlide();
+      stopCarousel();
+      startCarousel();
+    });
+    showSlide(0);
+    startCarousel();
   </script>
 </body>
 </html>
